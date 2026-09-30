@@ -129,8 +129,33 @@ pytest
 ## Important Concept
 
 Asynchronous programming is particularly useful for I/O-bound work such as network requests, database operations, file operations, and API calls.
-
 Concurrency is not the same as CPU parallelism. This project demonstrates concurrent handling of simulated I/O-bound tasks.
+
+## Monitoring & Logging
+
+The application includes a basic monitoring and logging system using Python's built-in logging module.
+
+Logging Features
+- Logs incoming API requests and HTTP methods.
+- Logs response status codes and request execution time.
+- Logs important application events and task execution.
+- Logs errors and exceptions with traceback information.
+- Uses different log levels such as INFO and ERROR.
+- Includes a /health endpoint for basic application health monitoring.
+- Logs are available in the terminal when running locally and through Docker logs when running in a container.
+
+### Example Logs
+2026-09-30 17:40:23,026 - INFO - Request: GET /health
+2026-09-30 17:40:23,027 - INFO - Health check accessed
+2026-09-30 17:40:23,028 - INFO - Response: GET /health - 200 - 0.00s
+
+## Docker Logs
+
+When running the application with Docker, logs can be viewed using:
+
+`docker logs async-api-container`
+
+This allows API activity, task execution, errors, and request performance to be monitored directly from the container logs.
 
 ## References
 
@@ -138,3 +163,4 @@ Concurrency is not the same as CPU parallelism. This project demonstrates concur
 - https://fastapi.tiangolo.com/async/
 - https://testdriven.io/blog/python-concurrency-parallelism/
 - https://medium.com/@oladayo_7133/asynchronous-programming-in-python-speeding-up-your-code-with-concurrency-df69be5f1807
+- https://medium.com/@mcgeejasond/devops-monitoring-and-logging-explained-939c3b5e17c4
