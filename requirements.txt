@@ -2,3 +2,5 @@ fastapi
 uvicorn[standard]
 pytest
 httpx2
+arize-phoenix-otel
+opentelemetry-instrumentation-fastapi

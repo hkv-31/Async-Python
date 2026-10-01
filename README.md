@@ -157,6 +157,32 @@ When running the application with Docker, logs can be viewed using:
 
 This allows API activity, task execution, errors, and request performance to be monitored directly from the container logs.
 
+## Observability & Tracing
+
+The application uses Arize Phoenix and OpenTelemetry to provide distributed tracing for the FastAPI application.
+
+### Tracing
+
+FastAPI requests are instrumented and sent to a local Arize Phoenix instance.
+
+Phoenix dashboard: http://localhost:6006
+
+The following endpoints were tested:
+
+- GET /
+- GET /health
+- GET /sequential
+- GET /concurrent
+- GET /error
+
+Tracing provides visibility into request execution, timing, and individual spans, while application logging records events and errors in the terminal.
+
+### Run Phoenix
+
+```bash
+phoenix serve
+```
+
 ## References
 
 - https://www.youtube.com/watch?v=K56nNuBEd0c&xstg=CAMSEBUJ_b-oH-PhF0yjBgaukzY%3D
@@ -164,3 +190,9 @@ This allows API activity, task execution, errors, and request performance to be 
 - https://testdriven.io/blog/python-concurrency-parallelism/
 - https://medium.com/@oladayo_7133/asynchronous-programming-in-python-speeding-up-your-code-with-concurrency-df69be5f1807
 - https://medium.com/@mcgeejasond/devops-monitoring-and-logging-explained-939c3b5e17c4
+- https://arize.com/compare/arize-vs-langsmith/
+- https://anudeepsri.medium.com/langsmith-vs-arize-vs-braintrust-e397e4728a76
+- https://medium.com/@aunraza021/langsmith-vs-phoenix-by-arize-ai-choosing-the-right-tool-for-llm-observability-0b4c2f21c077
+- https://youtu.be/hLvwoow3XTk?si=vcYGrKIjpWrIpP3u
+- https://youtu.be/vY61h6cSkVA?si=Ls9XJlW_enwLAwI_
+

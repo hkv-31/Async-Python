@@ -2,8 +2,18 @@ import asyncio
 import time
 from fastapi import FastAPI, Request
 from logger import logger
+from phoenix.otel import register
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
 app = FastAPI(title="Async API Demo")
+
+#Pheonix 
+tracer_provider = register(
+    project_name="async-api",
+    endpoint="http://localhost:6006/v1/traces"
+)
+
+FastAPIInstrumentor.instrument_app(app, tracer_provider=tracer_provider)
 
 #Log requests
 @app.middleware("http")
@@ -76,8 +86,8 @@ async def concurrent():
         "time_seconds": round(elapsed, 2)
     }
 
-'''To test errors: 
+#To test errors: 
 @app.get("/error")
 async def error():
     logger.error("Test error triggered")
-    raise Exception("Test exception")'''
+    raise Exception("Test exception")
